@@ -1,40 +1,45 @@
-
-'use strict';
-
-var ExtractTextPlugin = require("extract-text-webpack-plugin");  //css单独打包
+var webpack = require('webpack');
+var path = require('path');
+var loaders = require('./webpack.loaders');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'eval-source-map',
-
-    entry: __dirname + '/src/entry.js', //唯一入口文件
-    output: {
-        path: __dirname + '/build', //打包后的文件存放的地方
-        filename: 'bundle.js' //打包后输出文件的文件名
-    },
-
-    module: {
-        loaders: [
-            { test: /\.js$/, loader: "jsx!babel", include: /src/},
-            { test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css!postcss")},
-            { test: /\.scss$/, loader: ExtractTextPlugin.extract("style", "css!postcss!sass")},
-            { test: /\.(png|jpg)$/, loader: 'url?limit=8192'}
-        ]
-    },
-
-    postcss: [
-        require('autoprefixer')    //调用autoprefixer插件,css3自动补全
-    ],
-
-    devServer: {
-        // contentBase: './src/views'  //本地服务器所加载的页面所在的目录
-        port: 8888,
-        colors: true,  //终端中输出结果为彩色
-        historyApiFallback: true,  //不跳转
-        inline: true  //实时刷新
-    },
-
-    plugins: [
-        new ExtractTextPlugin('main.css'),
-    ]
-
-}
+	entry: [
+		'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
+		// 'webpack/hot/only-dev-server',
+		'./index.js' // Your appʼs entry point
+	],
+	//生成的sourcemap的方式
+	devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
+	output: {
+		path: path.join(__dirname, 'build'),
+		filename: 'bundle.js'
+	},
+	resolve: {
+		extensions: ['', '.js', '.jsx']
+	},
+	module: {
+		loaders: loaders
+	},
+	devServer: {
+		contentBase: "./build", //静态资源的目录
+		noInfo: true, //  --no-info option
+		hot: true,   //自动刷新
+		inline: true
+	},
+	plugins: [
+		new webpack.DefinePlugin({
+	      'process.env':{
+	        'NODE_ENV': JSON.stringify('production')
+	      }
+	    }),
+	    new ExtractTextPlugin("index.css"),
+		new HtmlwebpackPlugin({
+	      filename: 'index.html',
+	      template: 'index.html',
+	      inject: true
+	    })
+	]
+};

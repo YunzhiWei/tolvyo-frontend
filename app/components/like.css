@@ -1,0 +1,91 @@
+
+#like {
+	background-color: #fff;
+	font-size: 0;
+	-webkit-text-size-adjust:none;
+	padding-top: 3px;
+}
+
+#like p {
+	font-size: 14px;
+    color: #7f7f7f;
+    padding-left: 5px;
+}
+
+.like_content {
+	display: inline-block;
+	width: 100%;
+	height: 140px;
+	/*text-align: center;*/
+	border: 1px solid #E5E6E6;
+	position: relative;
+}
+
+.mask {
+	display: inline-block;
+	margin: 0 auto;
+	padding: 0;
+}
+
+.like_link {
+	width: 35%;
+	display: inline-block;
+	padding: 8px;
+}
+
+.like_link a {
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: -115px;
+}
+
+.like_desc {
+	width: 55%;
+	display: inline-block;
+	overflow: hidden;
+	font-size: 12px;
+	text-align: left;
+	line-height: 14px;
+	color: #333;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.like_desc .text {
+	display: -webkit-box;
+	height: 5.44em;
+	line-height: 1.38em;
+	font-size: 1.28em;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	overflow: hidden;
+	border-bottom: 1px solid #E5E6E6;
+}
+
+.like_price {
+	margin: 4px 0 16px 0;
+}
+
+.like_price span {
+	font-size: 14px;
+	color: #f15353;
+	display: table-cell;
+	vertical-align: middle;
+	float: left;
+}
+
+.like_price a {
+	color: #999;
+}
+
+.like_price div {
+	border: 1px solid #999;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 12px;
+	color: #999;
+	padding: 2px 6px;
+	float: right;
+}
+
+
