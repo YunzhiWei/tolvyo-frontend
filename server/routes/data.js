@@ -75,16 +75,6 @@ readFileData().then(() => {
 		console.log(err);
 	});
 
-	getFileName("./public/images/spike", "spike").then((files) => {
-		let obj = dataBase.spike.store;
-		spikeNames = files.map((file, index) => {
-			obj[index].icon = file;		
-			return obj[index];
-		});
-	},() => {
-		console.log(err);
-	})
-
 	getFileName("./public/images/more", "more").then((files) => {
 		moreNames = files.map((file, index) => {
 			return {

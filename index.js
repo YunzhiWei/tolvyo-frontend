@@ -16,5 +16,5 @@ ReactDOM.render(
 		<More source="http://128.1.67.161:3000/data/more" />
 		<Like source="http://128.1.67.161:3000/data/like" />
 	</div>, 
-	document.querySelector("#myApp")
+	document.getElementById("myApp")
 );

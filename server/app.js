@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// *Get data from director*
 app.use("/data/swiper", data.swiper);
 app.use("/data/otherapp", data.otherapp);
 app.use("/data/more", data.more);
